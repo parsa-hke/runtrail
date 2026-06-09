@@ -1,5 +1,9 @@
 # runtrail
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20612754.svg)](https://doi.org/10.5281/zenodo.20612754)
+[![PyPI](https://img.shields.io/pypi/v/runtrail.svg)](https://pypi.org/project/runtrail/)
+[![License: Apache-2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
+
 A local-first experiment tracker for solo ML researchers.
 
 ![runtrail Quickstart](docs/quickstart.gif)
@@ -89,8 +93,26 @@ Created and maintained by **Parsa Hosseini**.
 
 If you use runtrail in your research, please cite it. GitHub's
 **"Cite this repository"** button generates APA/BibTeX from
-[`CITATION.cff`](CITATION.cff). See [docs/releasing.md](docs/releasing.md) for how
-to obtain a citable DOI via Zenodo.
+[`CITATION.cff`](CITATION.cff). Each release is archived on Zenodo with a DOI
+(see [docs/releasing.md](docs/releasing.md)).
+
+> Hosseini, P. (2026). *runtrail: a local-first experiment tracker for solo ML
+> researchers* (v0.1.1). Zenodo. https://doi.org/10.5281/zenodo.20612754
+
+The concept DOI [`10.5281/zenodo.20612754`](https://doi.org/10.5281/zenodo.20612754)
+always resolves to the latest version.
+
+```bibtex
+@software{hosseini_runtrail_2026,
+  author    = {Hosseini, Parsa},
+  title     = {{runtrail: a local-first experiment tracker for solo ML researchers}},
+  year      = {2026},
+  publisher = {Zenodo},
+  version   = {v0.1.1},
+  doi       = {10.5281/zenodo.20612754},
+  url       = {https://doi.org/10.5281/zenodo.20612754}
+}
+```
 
 ## License
 

@@ -56,11 +56,12 @@ visitors ready-made APA/BibTeX. Example BibTeX once a DOI exists:
 
 ```bibtex
 @software{hosseini_runtrail_2026,
-  author  = {Hosseini, Parsa},
-  title   = {runtrail: a local-first experiment tracker for solo ML researchers},
-  year    = {2026},
-  version = {0.1.0},
-  doi     = {10.5281/zenodo.XXXXXXX},
-  url     = {https://github.com/parsa-hke/runtrail}
+  author    = {Hosseini, Parsa},
+  title     = {runtrail: a local-first experiment tracker for solo ML researchers},
+  year      = {2026},
+  publisher = {Zenodo},
+  version   = {v0.1.1},
+  doi       = {10.5281/zenodo.20612754},
+  url       = {https://doi.org/10.5281/zenodo.20612754}
 }
 ```
