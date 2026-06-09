@@ -77,10 +77,12 @@ jobs:
             dist/checksums.txt
           generate_release_notes: true
 
-  # ── Publish the Python SDK to PyPI ───────────────────────────────────────────
+  # ── Publish the Python SDK to PyPI (OIDC Trusted Publishing) ──────────────────
   pypi:
     name: Publish Python SDK
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write   # required for PyPI Trusted Publishing (OIDC)
     steps:
       - uses: actions/checkout@v4
 
@@ -95,10 +97,6 @@ jobs:
           python -m build
 
       - name: Publish to PyPI
-        env:
-          TWINE_USERNAME: __token__
-          TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
-        run: |
-          cd sdk
-          pip install --upgrade twine
-          twine upload dist/*
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: sdk/dist/
