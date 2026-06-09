@@ -19,7 +19,7 @@ Or with a context manager::
 
 from __future__ import annotations
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 __all__ = ["init", "run", "__version__"]
 
 import contextlib

@@ -5,6 +5,19 @@ All notable changes to runtrail are documented here. The format is based on
 [Semantic Versioning](https://semver.org/) (0.x = pre-stable; breaking changes
 may occur in minor releases and are called out here).
 
+## [0.1.1] — 2026-06-09
+
+First Zenodo-archived release, minting a citable DOI. No functional changes to
+the SDK or binary beyond release plumbing.
+
+### Changed
+
+- **Release workflow** — publish the Python SDK to PyPI via OIDC Trusted
+  Publishing (`pypa/gh-action-pypi-publish`) instead of an API token.
+- **Citation** — added `.zenodo.json` so the archived record carries author,
+  license, and keyword metadata; DOI backfilled into `CITATION.cff` and the
+  README.
+
 ## [0.1.0] — 2026-06-08
 
 First public release. The complete local-first MVP (SPEC phases 0–6).
@@ -30,4 +43,5 @@ First public release. The complete local-first MVP (SPEC phases 0–6).
 - **Distribution** — single static Go binary (5 platforms, pure-Go SQLite),
   `pip install runtrail`, and a tag-triggered release workflow.
 
+[0.1.1]: https://github.com/parsa-hke/runtrail/releases/tag/v0.1.1
 [0.1.0]: https://github.com/parsa-hke/runtrail/releases/tag/v0.1.0

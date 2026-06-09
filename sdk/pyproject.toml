@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "runtrail"
-version = "0.1.0"
+version = "0.1.1"
 description = "Local-first experiment tracker for solo ML researchers"
 readme = "README.md"
 authors = [{ name = "Parsa Hosseini", email = "parsahosseini.it@gmail.com" }]

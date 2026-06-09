@@ -1,0 +1,32 @@
+{
+  "title": "runtrail: a local-first experiment tracker for solo ML researchers",
+  "description": "runtrail is a single-binary, local-first experiment tracking tool for solo ML researchers. It prioritizes diffing and reproducibility over team collaboration: comparing two runs is the central operation, and git state, environment, hardware, and data hashes are captured automatically. All data lives in a local SQLite + Parquet store the user fully owns.",
+  "upload_type": "software",
+  "license": "Apache-2.0",
+  "access_right": "open",
+  "creators": [
+    {
+      "name": "Hosseini, Parsa",
+      "affiliation": ""
+    }
+  ],
+  "keywords": [
+    "machine learning",
+    "experiment tracking",
+    "reproducibility",
+    "mlops",
+    "research software"
+  ],
+  "related_identifiers": [
+    {
+      "scheme": "url",
+      "identifier": "https://github.com/parsa-hke/runtrail",
+      "relation": "isSupplementTo"
+    },
+    {
+      "scheme": "url",
+      "identifier": "https://pypi.org/project/runtrail/",
+      "relation": "isIdenticalTo"
+    }
+  ]
+}

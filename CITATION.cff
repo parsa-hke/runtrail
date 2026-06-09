@@ -22,7 +22,7 @@ keywords:
   - mlops
   - research software
 license: Apache-2.0
-version: 0.1.0
-date-released: "2026-06-08"
+version: 0.1.1
+date-released: "2026-06-09"
 # After archiving a release on Zenodo, paste the DOI here and uncomment:
 # doi: "10.5281/zenodo.XXXXXXX"
