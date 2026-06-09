@@ -1,0 +1,104 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+permissions:
+  contents: write
+
+jobs:
+  # ── Cross-compile binaries and publish a GitHub release ──────────────────────
+  binaries:
+    name: Build binaries & GitHub release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.25"
+          cache: true
+
+      - name: Resolve version from tag
+        id: version
+        run: echo "version=${GITHUB_REF_NAME#v}" >> "$GITHUB_OUTPUT"
+
+      - name: Build embedded frontend
+        run: |
+          cd web
+          npm ci
+          npm run build
+          cd ..
+          rm -rf internal/webui/dist
+          cp -R web/dist internal/webui/dist
+
+      - name: Cross-compile binaries
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          mkdir -p dist
+          LDFLAGS="-s -w -X github.com/runtrail/runtrail/internal/version.Version=${VERSION}"
+          PLATFORMS="linux/amd64 linux/arm64 darwin/amd64 darwin/arm64 windows/amd64"
+          for PLATFORM in $PLATFORMS; do
+            OS="${PLATFORM%/*}"
+            ARCH="${PLATFORM#*/}"
+            BIN="runtrail"
+            [ "$OS" = "windows" ] && BIN="runtrail.exe"
+            WORK="dist/runtrail-${OS}-${ARCH}"
+            mkdir -p "$WORK"
+            echo "==> building ${OS}/${ARCH}"
+            GOOS="$OS" GOARCH="$ARCH" CGO_ENABLED=0 \
+              go build -ldflags="$LDFLAGS" -o "$WORK/$BIN" ./cmd/runtrail
+            cp LICENSE README.md "$WORK/"
+            ARCHIVE="runtrail-${VERSION}-${OS}-${ARCH}"
+            if [ "$OS" = "windows" ]; then
+              (cd dist && zip -r "${ARCHIVE}.zip" "runtrail-${OS}-${ARCH}" >/dev/null)
+            else
+              (cd dist && tar -czf "${ARCHIVE}.tar.gz" "runtrail-${OS}-${ARCH}")
+            fi
+          done
+          (cd dist && sha256sum *.tar.gz *.zip > checksums.txt)
+          ls -lh dist
+
+      - name: Create GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            dist/*.tar.gz
+            dist/*.zip
+            dist/checksums.txt
+          generate_release_notes: true
+
+  # ── Publish the Python SDK to PyPI ───────────────────────────────────────────
+  pypi:
+    name: Publish Python SDK
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build SDK
+        run: |
+          cd sdk
+          pip install --upgrade build
+          python -m build
+
+      - name: Publish to PyPI
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+        run: |
+          cd sdk
+          pip install --upgrade twine
+          twine upload dist/*

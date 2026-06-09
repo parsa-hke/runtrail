@@ -1,0 +1,111 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  # ── Go ───────────────────────────────────────────────────────────────────────
+  go:
+    name: Go build & test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.25"
+          cache: true
+
+      - name: go mod tidy check
+        run: |
+          go mod tidy
+          git diff --exit-code go.sum
+
+      - name: Build
+        run: go build ./...
+
+      - name: Test
+        run: go test -race -count=1 ./...
+
+      - name: Vet
+        run: go vet ./...
+
+      - name: Check binary size
+        run: |
+          go build -ldflags="-s -w" -o runtrail ./cmd/runtrail
+          SIZE=$(stat -c%s runtrail 2>/dev/null || stat -f%z runtrail)
+          MAX=$((50 * 1024 * 1024))
+          echo "Binary size: $SIZE bytes (max: $MAX)"
+          if [ "$SIZE" -gt "$MAX" ]; then
+            echo "ERROR: binary exceeds 50MB NFR-4 budget" >&2
+            exit 1
+          fi
+
+  # ── Python ───────────────────────────────────────────────────────────────────
+  python:
+    name: Python test
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.9", "3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install SDK
+        run: |
+          cd sdk
+          pip install -e ".[dev]"
+
+      - name: Run tests
+        run: |
+          cd sdk
+          pytest -q
+
+  # ── Web ───────────────────────────────────────────────────────────────────────
+  web:
+    name: Web build & test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+
+      - name: Install dependencies
+        run: |
+          cd web
+          npm ci
+
+      - name: Type check
+        run: |
+          cd web
+          npm run typecheck
+
+      - name: Test
+        run: |
+          cd web
+          npm test
+
+      - name: Build
+        run: |
+          cd web
+          npm run build
+
+      - name: Check bundle size
+        run: |
+          TOTAL=$(du -sb web/dist | cut -f1)
+          MAX=$((5 * 1024 * 1024))
+          echo "Bundle size: $TOTAL bytes (max: $MAX)"
+          if [ "$TOTAL" -gt "$MAX" ]; then
+            echo "WARNING: bundle exceeds 5MB — consider splitting" >&2
+          fi

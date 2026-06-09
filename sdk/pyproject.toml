@@ -1,0 +1,62 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "runtrail"
+version = "0.1.0"
+description = "Local-first experiment tracker for solo ML researchers"
+readme = "README.md"
+license = { text = "Apache-2.0" }
+requires-python = ">=3.9"
+keywords = ["machine learning", "experiment tracking", "mlops"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "pyarrow>=14",
+    "psutil>=5.9",
+]
+
+[project.optional-dependencies]
+gpu = ["pynvml>=11"]
+matplotlib = ["matplotlib>=3.7"]
+all = ["runtrail[gpu,matplotlib]"]
+dev = [
+    "pytest>=8",
+    "pytest-cov",
+    "ruff",
+    "mypy",
+    "pyarrow-stubs",
+]
+
+[project.urls]
+Homepage = "https://github.com/runtrail/runtrail"
+Repository = "https://github.com/runtrail/runtrail"
+Issues = "https://github.com/runtrail/runtrail/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["runtrail"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+
+[tool.mypy]
+python_version = "3.9"
+strict = true

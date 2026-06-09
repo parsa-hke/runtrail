@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>RunTrail — trackr ui</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" />
+<style>
+  :root {
+    --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    --sans: "Inter", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  }
+  /* Dark (default) */
+  html[data-theme="dark"] {
+    --bg: #0d0f12;
+    --bg-2: #111418;
+    --surface: #14181d;
+    --surface-2: #181c22;
+    --surface-3: #1d2128;
+    --hover: #1a1e25;
+    --border: #23272f;
+    --border-2: #2c313a;
+    --border-strong: #383e48;
+    --fg: #d8d9dc;
+    --fg-2: #b4b6bb;
+    --fg-3: #7a7e87;
+    --fg-4: #565a63;
+    --accent: #f59e0b;
+    --accent-2: #fbbf24;
+    --accent-soft: rgba(245, 158, 11, 0.14);
+    --info: #38bdf8;
+    --info-soft: rgba(56, 189, 248, 0.14);
+    --success: #4ade80;
+    --success-soft: rgba(74, 222, 128, 0.13);
+    --danger: #ef4444;
+    --danger-soft: rgba(239, 68, 68, 0.14);
+    --warn: #facc15;
+    --purple: #a78bfa;
+    --diff-add: rgba(74, 222, 128, 0.12);
+    --diff-del: rgba(239, 68, 68, 0.12);
+    --diff-edit: rgba(245, 158, 11, 0.12);
+    --shadow: 0 1px 0 rgba(0,0,0,0.4), 0 8px 24px rgba(0,0,0,0.35);
+    color-scheme: dark;
+  }
+  /* Light */
+  html[data-theme="light"] {
+    --bg: #f7f6f3;
+    --bg-2: #efede8;
+    --surface: #ffffff;
+    --surface-2: #faf9f6;
+    --surface-3: #f2f1ec;
+    --hover: #f0eeea;
+    --border: #e6e3dc;
+    --border-2: #d8d4cb;
+    --border-strong: #c1bdb2;
+    --fg: #1c1d20;
+    --fg-2: #3a3c41;
+    --fg-3: #6c6f76;
+    --fg-4: #9a9da4;
+    --accent: #b45309;
+    --accent-2: #d97706;
+    --accent-soft: rgba(180, 83, 9, 0.10);
+    --info: #0369a1;
+    --info-soft: rgba(3, 105, 161, 0.10);
+    --success: #15803d;
+    --success-soft: rgba(21, 128, 61, 0.10);
+    --danger: #b91c1c;
+    --danger-soft: rgba(185, 28, 28, 0.10);
+    --warn: #a16207;
+    --purple: #6d28d9;
+    --diff-add: rgba(21, 128, 61, 0.10);
+    --diff-del: rgba(185, 28, 28, 0.10);
+    --diff-edit: rgba(180, 83, 9, 0.10);
+    --shadow: 0 1px 0 rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.08);
+    color-scheme: light;
+  }
+  * { box-sizing: border-box; }
+  html, body, #root { height: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--mono);
+    font-size: 13px;
+    line-height: 1.45;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "calt" 1, "ss01" 1, "ss02" 1;
+  }
+  ::selection { background: var(--accent-soft); color: var(--fg); }
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--border-2); border-radius: 8px; border: 2px solid var(--bg); }
+  ::-webkit-scrollbar-thumb:hover { background: var(--border-strong); }
+
+  .sans { font-family: var(--sans); }
+  .mono { font-family: var(--mono); }
+  button { font-family: inherit; color: inherit; cursor: pointer; }
+  input, select, textarea { font-family: inherit; color: inherit; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* Boot splash to prevent flash of unstyled */
+  #boot {
+    position: fixed; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--bg); color: var(--fg-3);
+    font-family: var(--mono); font-size: 12px;
+    z-index: 9999;
+  }
+  #boot.ready { display: none; }
+  .blink::after { content: "▎"; color: var(--accent); animation: blink 1s steps(2) infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+</style>
+</head>
+<body>
+<div id="boot"><span>runtrail</span>&nbsp;<span class="blink">initializing</span></div>
+<div id="root"></div>
+
+<script>
+  // Theme bootstrapping (avoid FOUC)
+  (function () {
+    var t = localStorage.getItem("rt:theme") || "dark";
+    document.documentElement.setAttribute("data-theme", t);
+  })();
+</script>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="src/data.jsx"></script>
+<script type="text/babel" src="src/components.jsx"></script>
+<script type="text/babel" src="src/run-list.jsx"></script>
+<script type="text/babel" src="src/run-detail.jsx"></script>
+<script type="text/babel" src="src/diff-view.jsx"></script>
+<script type="text/babel" src="src/project-settings.jsx"></script>
+<script type="text/babel" src="src/live-run.jsx"></script>
+<script type="text/babel" src="src/app.jsx"></script>
+</body>
+</html>

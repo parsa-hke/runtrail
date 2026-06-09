@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>runtrail</title>
+    <style>
+      /* Theme bootstrap — prevents flash of unstyled content. */
+      :root { color-scheme: dark; }
+      html[data-theme="light"] { color-scheme: light; }
+    </style>
+    <script>
+      // Apply persisted theme before React mounts.
+      (function () {
+        var t = localStorage.getItem("rt:theme") || "dark";
+        document.documentElement.setAttribute("data-theme", t);
+      })();
+    </script>
+    <script type="module" crossorigin src="./assets/index-BaetC5OL.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/query-Dy68nmDr.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-Ckl6TsNq.js">
+    <link rel="stylesheet" crossorigin href="./assets/index-a7RJXFYX.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>

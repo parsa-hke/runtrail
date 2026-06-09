@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "calt" 1, "ss01" 1, "ss02" 1;
+}
+
+::selection { background: var(--accent-soft); color: var(--fg); }
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-2); border-radius: 8px; border: 2px solid var(--bg); }
+::-webkit-scrollbar-thumb:hover { background: var(--border-strong); }
+
+button { font-family: inherit; color: inherit; cursor: pointer; }
+input, select, textarea { font-family: inherit; color: inherit; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.sans { font-family: var(--sans); }
+.mono { font-family: var(--mono); }
+
+/* Cursor blink used in boot splash and live run log tail. */
+.blink::after {
+  content: "▎";
+  color: var(--accent);
+  animation: blink 1s steps(2) infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+@keyframes rtPulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.4; }
+}
+
+/* Row hover utility used across tables. */
+.row-hover:hover { background: var(--hover) !important; }
+.row-actions { opacity: 0; transition: opacity 0.12s; }
+tr:hover .row-actions { opacity: 1 !important; }
+.linkish { cursor: pointer; }
+.linkish:hover { color: var(--accent); }
