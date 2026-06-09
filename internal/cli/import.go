@@ -9,8 +9,8 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/runtrail/runtrail/internal/config"
-	"github.com/runtrail/runtrail/internal/store"
+	"github.com/parsa-hke/runtrail/internal/config"
+	"github.com/parsa-hke/runtrail/internal/store"
 	"github.com/spf13/cobra"
 )
 

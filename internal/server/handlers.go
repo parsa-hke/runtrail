@@ -7,9 +7,9 @@ import (
 	"strings"
 
 	"github.com/go-chi/chi/v5"
-	"github.com/runtrail/runtrail/internal/diff"
-	"github.com/runtrail/runtrail/internal/domain"
-	"github.com/runtrail/runtrail/internal/store"
+	"github.com/parsa-hke/runtrail/internal/diff"
+	"github.com/parsa-hke/runtrail/internal/domain"
+	"github.com/parsa-hke/runtrail/internal/store"
 )
 
 func (a *api) listProjects(w http.ResponseWriter, r *http.Request) {

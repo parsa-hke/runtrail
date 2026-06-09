@@ -53,7 +53,7 @@ cd "$ROOT"
 # 3. Cross-compile Go binaries
 echo "==> Step 3: Cross-compiling Go binaries..."
 mkdir -p dist
-LDFLAGS="-s -w -X github.com/runtrail/runtrail/internal/version.Version=${VERSION}"
+LDFLAGS="-s -w -X github.com/parsa-hke/runtrail/internal/version.Version=${VERSION}"
 
 PLATFORMS=(
   "linux/amd64"

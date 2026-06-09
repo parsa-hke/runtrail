@@ -13,8 +13,8 @@ import (
 	"time"
 
 	"github.com/fsnotify/fsnotify"
-	"github.com/runtrail/runtrail/internal/config"
-	"github.com/runtrail/runtrail/internal/store"
+	"github.com/parsa-hke/runtrail/internal/config"
+	"github.com/parsa-hke/runtrail/internal/store"
 )
 
 type runWatcher struct {

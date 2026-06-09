@@ -8,8 +8,8 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/runtrail/runtrail/internal/config"
-	"github.com/runtrail/runtrail/internal/domain"
+	"github.com/parsa-hke/runtrail/internal/config"
+	"github.com/parsa-hke/runtrail/internal/domain"
 	"github.com/spf13/cobra"
 )
 

@@ -2,7 +2,7 @@
 
 Local-first experiment tracker for solo ML researchers.
 
-See the [full documentation](https://github.com/runtrail/runtrail) for details.
+See the [full documentation](https://github.com/parsa-hke/runtrail) for details.
 
 ```python
 import runtrail

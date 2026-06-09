@@ -11,7 +11,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/runtrail/runtrail/internal/config"
+	"github.com/parsa-hke/runtrail/internal/config"
 )
 
 // MetricRow is one wide-format row, one map per (step, wall_ms) tuple.

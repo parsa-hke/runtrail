@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/runtrail/runtrail/internal/domain"
+	"github.com/parsa-hke/runtrail/internal/domain"
 )
 
 // RunWriteOptions carries the row data needed to recreate a run during import.

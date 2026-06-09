@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/runtrail/runtrail/internal/version"
+	"github.com/parsa-hke/runtrail/internal/version"
 	"github.com/spf13/cobra"
 )
 
@@ -33,7 +33,7 @@ Quick start:
   pip install runtrail          # install the Python SDK
   runtrail ui                   # launch the local web UI
 
-Documentation: https://github.com/runtrail/runtrail`,
+Documentation: https://github.com/parsa-hke/runtrail`,
 		Version:          version.Version,
 		SilenceUsage:     true,
 		SilenceErrors:    true,

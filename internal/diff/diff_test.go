@@ -5,7 +5,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/runtrail/runtrail/internal/domain"
+	"github.com/parsa-hke/runtrail/internal/domain"
 )
 
 func makeRuns() (domain.Run, domain.Run) {

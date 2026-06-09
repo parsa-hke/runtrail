@@ -6,7 +6,7 @@ import (
 	"os"
 	"text/tabwriter"
 
-	"github.com/runtrail/runtrail/internal/domain"
+	"github.com/parsa-hke/runtrail/internal/domain"
 	"github.com/spf13/cobra"
 )
 

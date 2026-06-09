@@ -13,9 +13,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/runtrail/runtrail/internal/domain"
-	"github.com/runtrail/runtrail/internal/server"
-	"github.com/runtrail/runtrail/internal/store"
+	"github.com/parsa-hke/runtrail/internal/domain"
+	"github.com/parsa-hke/runtrail/internal/server"
+	"github.com/parsa-hke/runtrail/internal/store"
 )
 
 func setupTestStore(t *testing.T) (*store.Store, string) {

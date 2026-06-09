@@ -1,4 +1,4 @@
-module github.com/runtrail/runtrail
+module github.com/parsa-hke/runtrail
 
 go 1.25.0
 

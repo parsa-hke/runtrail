@@ -7,6 +7,8 @@ name = "runtrail"
 version = "0.1.0"
 description = "Local-first experiment tracker for solo ML researchers"
 readme = "README.md"
+authors = [{ name = "Parsa Hosseini", email = "parsahosseini.it@gmail.com" }]
+maintainers = [{ name = "Parsa Hosseini", email = "parsahosseini.it@gmail.com" }]
 license = { text = "Apache-2.0" }
 requires-python = ">=3.9"
 keywords = ["machine learning", "experiment tracking", "mlops"]
@@ -39,9 +41,9 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/runtrail/runtrail"
-Repository = "https://github.com/runtrail/runtrail"
-Issues = "https://github.com/runtrail/runtrail/issues"
+Homepage = "https://github.com/parsa-hke/runtrail"
+Repository = "https://github.com/parsa-hke/runtrail"
+Issues = "https://github.com/parsa-hke/runtrail/issues"
 
 [tool.hatch.build.targets.wheel]
 packages = ["runtrail"]

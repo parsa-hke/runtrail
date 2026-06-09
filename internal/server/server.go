@@ -13,8 +13,8 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
-	"github.com/runtrail/runtrail/internal/store"
-	"github.com/runtrail/runtrail/internal/version"
+	"github.com/parsa-hke/runtrail/internal/store"
+	"github.com/parsa-hke/runtrail/internal/version"
 )
 
 // Options configures the runtrail HTTP server.

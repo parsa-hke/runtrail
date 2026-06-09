@@ -28,7 +28,7 @@ export default function SettingsPage() {
       <Panel title="About">
         <KV k="api" v={<a href="/api/v1/health" style={{ color: 'var(--info)' }}>/api/v1/health</a>} />
         <KV k="mutations" v={mutationsEnabled ? 'enabled' : 'enable with `runtrail ui --mutations`'} />
-        <KV k="docs" v={<a href="https://github.com/runtrail/runtrail" style={{ color: 'var(--info)' }}>github.com/runtrail/runtrail</a>} />
+        <KV k="docs" v={<a href="https://github.com/parsa-hke/runtrail" style={{ color: 'var(--info)' }}>github.com/parsa-hke/runtrail</a>} />
       </Panel>
     </div>
   )

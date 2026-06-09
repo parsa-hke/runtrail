@@ -9,7 +9,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/runtrail/runtrail/internal/domain"
+	"github.com/parsa-hke/runtrail/internal/domain"
 )
 
 // ── Public types ─────────────────────────────────────────────────────────────

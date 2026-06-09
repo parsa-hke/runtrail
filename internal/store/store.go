@@ -9,7 +9,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/runtrail/runtrail/internal/config"
+	"github.com/parsa-hke/runtrail/internal/config"
 
 	_ "modernc.org/sqlite"
 )

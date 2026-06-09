@@ -11,8 +11,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/runtrail/runtrail/internal/config"
-	"github.com/runtrail/runtrail/internal/domain"
+	"github.com/parsa-hke/runtrail/internal/config"
+	"github.com/parsa-hke/runtrail/internal/domain"
 )
 
 // ListRuns returns runs matching f, newest first.

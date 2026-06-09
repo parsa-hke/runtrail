@@ -52,10 +52,10 @@ pip install runtrail
 
 # Go binary (CLI + UI server)
 # macOS
-brew install runtrail/tap/runtrail
+brew install parsa-hke/tap/runtrail
 
 # Linux / Windows
-# Download from https://github.com/runtrail/runtrail/releases
+# Download from https://github.com/parsa-hke/runtrail/releases
 ```
 
 ## Documentation
@@ -64,6 +64,7 @@ brew install runtrail/tap/runtrail
 - [CLI reference](docs/cli.md)
 - [Storage schema](docs/schema.md)
 - [Architecture](docs/architecture.md)
+- [Releasing & citation](docs/releasing.md)
 - [Build spec](SPEC.md)
 
 ## Development
@@ -79,6 +80,17 @@ go test ./...
 cd sdk && pytest -q
 cd web && npm test
 ```
+
+## Author
+
+Created and maintained by **Parsa Hosseini**.
+
+## Citation
+
+If you use runtrail in your research, please cite it. GitHub's
+**"Cite this repository"** button generates APA/BibTeX from
+[`CITATION.cff`](CITATION.cff). See [docs/releasing.md](docs/releasing.md) for how
+to obtain a citable DOI via Zenodo.
 
 ## License
 

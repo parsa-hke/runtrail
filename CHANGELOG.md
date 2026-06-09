@@ -30,4 +30,4 @@ First public release. The complete local-first MVP (SPEC phases 0–6).
 - **Distribution** — single static Go binary (5 platforms, pure-Go SQLite),
   `pip install runtrail`, and a tag-triggered release workflow.
 
-[0.1.0]: https://github.com/runtrail/runtrail/releases/tag/v0.1.0
+[0.1.0]: https://github.com/parsa-hke/runtrail/releases/tag/v0.1.0

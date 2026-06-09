@@ -8,7 +8,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/runtrail/runtrail/internal/domain"
+	"github.com/parsa-hke/runtrail/internal/domain"
 )
 
 // ErrNotFound is returned when a requested row is missing.

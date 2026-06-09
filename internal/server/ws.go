@@ -10,8 +10,8 @@ import (
 	"time"
 
 	"github.com/gorilla/websocket"
-	"github.com/runtrail/runtrail/internal/domain"
-	"github.com/runtrail/runtrail/internal/store"
+	"github.com/parsa-hke/runtrail/internal/domain"
+	"github.com/parsa-hke/runtrail/internal/store"
 )
 
 var upgrader = websocket.Upgrader{

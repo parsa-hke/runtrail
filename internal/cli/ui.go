@@ -14,8 +14,8 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/runtrail/runtrail/internal/server"
-	"github.com/runtrail/runtrail/internal/webui"
+	"github.com/parsa-hke/runtrail/internal/server"
+	"github.com/parsa-hke/runtrail/internal/webui"
 	"github.com/spf13/cobra"
 )
 

@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+title: "runtrail: a local-first experiment tracker for solo ML researchers"
+message: "If you use runtrail in your research, please cite it as below."
+type: software
+authors:
+  - given-names: Parsa
+    family-names: Hosseini
+    email: parsahosseini.it@gmail.com
+    # orcid: "https://orcid.org/0000-0000-0000-0000"  # add your ORCID iD
+repository-code: "https://github.com/parsa-hke/runtrail"
+url: "https://github.com/parsa-hke/runtrail"
+abstract: >-
+  runtrail is a single-binary, local-first experiment tracking tool for solo
+  ML researchers. It prioritizes diffing and reproducibility over team
+  collaboration: comparing two runs is the central operation, and git state,
+  environment, hardware, and data hashes are captured automatically. All data
+  lives in a local SQLite + Parquet store the user fully owns.
+keywords:
+  - machine learning
+  - experiment tracking
+  - reproducibility
+  - mlops
+  - research software
+license: Apache-2.0
+version: 0.1.0
+date-released: "2026-06-08"
+# After archiving a release on Zenodo, paste the DOI here and uncomment:
+# doi: "10.5281/zenodo.XXXXXXX"

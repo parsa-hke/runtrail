@@ -10,7 +10,7 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT"
 
 VERSION="${VERSION:-dev}"
-LDFLAGS="-s -w -X github.com/runtrail/runtrail/internal/version.Version=${VERSION}"
+LDFLAGS="-s -w -X github.com/parsa-hke/runtrail/internal/version.Version=${VERSION}"
 
 echo "==> Building web frontend..."
 cd web
