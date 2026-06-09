@@ -29,7 +29,7 @@ import queue
 import threading
 import time
 from dataclasses import dataclass, field
-from typing import Any
+from typing import Any, Union
 
 from runtrail._store import Store
 
@@ -80,7 +80,9 @@ class Finalize:
     pass
 
 
-_Message = LogScalars | LogResource | LogEvent | AddTag | AddNote | Finalize
+# NOTE: a runtime assignment (not an annotation), so `from __future__ import
+# annotations` does not defer it — use typing.Union to stay Python 3.9 compatible.
+_Message = Union[LogScalars, LogResource, LogEvent, AddTag, AddNote, Finalize]
 
 
 # ---------------------------------------------------------------------------

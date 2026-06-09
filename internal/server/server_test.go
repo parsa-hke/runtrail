@@ -152,6 +152,9 @@ func TestReadOnlyEndpointsAndMutationsGating(t *testing.T) {
 // TestNFR2Enforcement measures the response time of listing 1,000 runs.
 // Budget: < 200ms.
 func TestNFR2Enforcement(t *testing.T) {
+	if testing.Short() {
+		t.Skip("latency budget is unreliable under -short/-race; enforced in the non-race CI pass")
+	}
 	s, tmpDir := setupTestStore(t)
 	defer os.RemoveAll(tmpDir)
 	defer s.Close()
@@ -212,6 +215,9 @@ func TestNFR2Enforcement(t *testing.T) {
 // TestNFR3Enforcement measures the timing for the diff endpoint on two runs.
 // Budget: < 500ms.
 func TestNFR3Enforcement(t *testing.T) {
+	if testing.Short() {
+		t.Skip("latency budget is unreliable under -short/-race; enforced in the non-race CI pass")
+	}
 	s, tmpDir := setupTestStore(t)
 	defer os.RemoveAll(tmpDir)
 	defer s.Close()
